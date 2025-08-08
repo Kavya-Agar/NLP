@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 from datetime import datetime
-from sklearn.preprocessing import MinMaxScaler # Changed to MinMaxScaler for better time series scaling
+from sklearn.preprocessing import MinMaxScaler
 from tensorflow import keras
 
 # Set environment variable to suppress TensorFlow warnings
@@ -26,13 +26,13 @@ plt.plot(data['date'], data['open'], label='Open', color='blue')
 plt.plot(data['date'], data['close'], label='Close', color='red')
 plt.title("Open-Close Price over Time")
 plt.legend()
-plt.show() # Added plt.show() to display the plot
+plt.show() 
 
 # Plot 2 - Trading Volume (check for outliers)
 plt.figure(figsize=(12,6))
 plt.plot(data['date'], data['volume'], label='Volume', color='orange')
 plt.title('Stock Volume over Time')
-plt.show() # Added plt.show() to display the plot
+plt.show() 
 
 # Drop non-numeric columns for correlation heatmap
 # Note: 'date' is now a datetime object, so it will be excluded.
@@ -42,22 +42,15 @@ numeric_data = data.select_dtypes(include=["int64", "float64"])
 plt.figure(figsize=(8,6))
 sns.heatmap(numeric_data.corr(), annot=True, cmap="coolwarm")
 plt.title("Feature Correlation Heatmap")
-plt.show() # Added plt.show() to display the plot
+plt.show() 
 
-# The original code had a typo, 'data' column was created but not used.
-# The filter was also incorrect as it tried to filter on the original 'date' column.
-# The `prediction` variable was created but not used, so I've commented it out.
-# prediction = data.loc[
-#     (data['date'] > datetime(2013,1,1)) &
-#     (data['date'] < datetime(2018,1,1))
-# ]
 
 plt.figure(figsize=(12,6))
 plt.plot(data['date'], data['close'], label='Close', color='blue')
 plt.xlabel("Date")
 plt.ylabel("Close")
 plt.title("Price over Time")
-plt.show() # Added plt.show() to display the plot
+plt.show() 
 
 # Prepare for the LSTM Model (Sequential)
 stock_close = data.filter(["close"])
@@ -143,4 +136,4 @@ plt.title("Our Stock Predictions")
 plt.xlabel("Date")
 plt.ylabel("Close Price")
 plt.legend()
-plt.show() # Added plt.show() to display the final plot
+plt.show()
