@@ -1,0 +1,8 @@
+openai>=1.0.0
+python-dotenv
+PyPDF2>=3.0.0
+textract>=1.6.4
+streamlit>=1.22.0
+mammoth>=1.4.0
+python-magic-bin>=0.4.14
+pyton-magic>=0.4.27
